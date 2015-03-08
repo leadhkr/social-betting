@@ -12,6 +12,6 @@ We're going to create a web application that allows users to create a "group" or
 
 ## Data Model
 
-* User [ id, email, first_name, last_name, phone, password, admin ]
+* User [ id, email, first_name, last_name, phone, password, admin, league_id ]
 * League [ id, name, password, year ]
-* Bets [ amount, user_one, user_two, expiration ]
+* Bets [ amount, user_two, expiration, user_id ]
