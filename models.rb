@@ -42,8 +42,8 @@ class User
     self.new? || self.dirty?
   end
 
-  has n, :user_groups
-  has n, :groups, :through => :user_groups
+  # has n, :user_groups
+  has n, :groups, :through => Resource
 
   has 1, :bet, :child_key => [:bet_creator_id]
   has 1, :bet, :child_key => [:bet_receiver_id]
@@ -71,20 +71,20 @@ class Group
     self.new? || self.dirty?
   end
 
-  has n, :user_groups
-  has n, :users, :through => :user_groups
+  # has n, :user_groups
+  has n, :users, :through => Resource
 
 end
 
 # JOIN TABLE (USER/GROUP)
 # =====================================
 
-class UserGroup
-  include DataMapper::Resource
-  property :id, Serial
-  belongs_to :user
-  belongs_to :group
-end
+# class UserGroup
+#   include DataMapper::Resource
+#   property :id, Serial
+#   belongs_to :user
+#   belongs_to :group
+# end
 
 # BETS
 # =====================================

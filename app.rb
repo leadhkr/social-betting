@@ -53,18 +53,17 @@ end
 # ===============================
 
 get '/new_group' do
-  @group = Group.new
   erb :new_group
 end
 
 post '/new_group' do
-  group = Group.create({  :group_name => params[:group][:group_name],
-                          :password => params[:group][:password]
-                      })
+  new_group = Group.create(params[:group])
+  current_user.groups << new_group
+  current_user.save
 
-  if group.saved?
+  if new_group.saved?
     redirect '/'
   else
-    erb :new_group
+    new_group.errors.full_messages
   end
 end
