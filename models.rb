@@ -39,14 +39,25 @@ class User
   validates_length_of :password_confirmation, :min => 6, :if => :new_user
 
   def new_user
-    self.new? || self.dirty?
+    self.new?
   end
 
-  # has n, :user_groups
-  has n, :groups, :through => Resource
+  has n, :memberships
+  has n, :groups, through: :memberships
 
   has 1, :bet, :child_key => [:bet_creator_id]
   has 1, :bet, :child_key => [:bet_receiver_id]
+
+end
+
+# MEMBERSHIP JOIN TABLE
+# =====================================
+
+class Membership
+  include DataMapper::Resource
+  property :id, Serial
+  belongs_to :user, :required => true
+  belongs_to :group, :required => true
 
 end
 
@@ -68,23 +79,13 @@ class Group
   validates_length_of :password_confirmation, :min => 6, :if => :new_group
 
   def new_group
-    self.new? || self.dirty?
+    self.new?
   end
 
-  # has n, :user_groups
-  has n, :users, :through => Resource
+  has n, :memberships
+  has n, :users, through: :memberships
 
 end
-
-# JOIN TABLE (USER/GROUP)
-# =====================================
-
-# class UserGroup
-#   include DataMapper::Resource
-#   property :id, Serial
-#   belongs_to :user
-#   belongs_to :group
-# end
 
 # BETS
 # =====================================
