@@ -35,7 +35,6 @@ class User
   property :password, BCryptHash, :required => true
   validates_confirmation_of :password
 
-
   attr_accessor :password_confirmation
   validates_length_of :password_confirmation, :min => 6, :if => :new_user
 
@@ -45,7 +44,6 @@ class User
 
   has n, :user_groups
   has n, :groups, :through => :user_groups
-
 
   has 1, :bet, :child_key => [:bet_creator_id]
   has 1, :bet, :child_key => [:bet_receiver_id]
@@ -67,12 +65,11 @@ class Group
   validates_confirmation_of :password
 
   attr_accessor :password_confirmation
-  validates_length_of :password_confirmation, :min => 6, if: :new_group
+  validates_length_of :password_confirmation, :min => 6, :if => :new_group
 
   def new_group
     self.new? || self.dirty?
   end
-
 
   has n, :user_groups
   has n, :users, :through => :user_groups

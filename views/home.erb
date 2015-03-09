@@ -1,12 +1,6 @@
-
 <% if logged_in? %>
   Hello, <%= current_user.first_name %>
-  <a href="/session/logout">Log out</a>
+  <a href="/new_group">Create Group</a> | <a href="#">Join Group</a> | <a href="/session/logout">Log out</a>
 <% else %>
-  <form action="/session" method="post">
-    <input type="text" name="user[email]" placeholder="Email"></br>
-    <input type="password" name="user[password]" placeholder="Password"></br>
-    <button>Log in</button>
-    <a href="/user">Register</a>
-  </form>
+  <%= erb :_sign_in %>
 <% end %>

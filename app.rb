@@ -41,11 +41,30 @@ post '/user' do
 
 end
 
-
 # USER SIGN OUT
 # ===============================
 
 get '/session/logout' do
   log_out
   redirect '/'
+end
+
+# CREATE GROUP
+# ===============================
+
+get '/new_group' do
+  @group = Group.new
+  erb :new_group
+end
+
+post '/new_group' do
+  group = Group.create({  :group_name => params[:group][:group_name],
+                          :password => params[:group][:password]
+                      })
+
+  if group.saved?
+    redirect '/'
+  else
+    erb :new_group
+  end
 end
