@@ -6,7 +6,7 @@ We're going to create a web application that allows users to create a "group" or
 
 ### [v0.1] Allow Users to Register and Log In
 
-* [ ] As a user, I want to sign up for an account
+* [X] As a user, I want to sign up for an account
 * [ ] As a user, I want to log in to my account
 * [ ] As a user, I want to create league
 

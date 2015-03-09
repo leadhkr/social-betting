@@ -8,6 +8,9 @@ end
 
 DataMapper.setup(:default, ENV['DATABASE_URL'])
 
+# USERS
+# =====================================
+
 class User
   include DataMapper::Resource
   property :id, Serial
@@ -32,40 +35,62 @@ class User
   property :password, BCryptHash, :required => true
   validates_confirmation_of :password
 
-  attr_accessor :password_confirmation
-  validates_length_of :password_confirmation, :min => 6, if: :new_user
 
-  belongs_to :league
-  has 1, :bet, :child_key => [:bet_creator_id]
-  has 1, :bet, :child_key => [:bet_receiver_id]
+  attr_accessor :password_confirmation
+  validates_length_of :password_confirmation, :min => 6, :if => :new_user
 
   def new_user
     self.new? || self.dirty?
   end
 
+  has n, :user_groups
+  has n, :groups, :through => :user_groups
+
+
+  has 1, :bet, :child_key => [:bet_creator_id]
+  has 1, :bet, :child_key => [:bet_receiver_id]
+
 end
 
-class League
+# GROUPS
+# =====================================
+
+class Group
   include DataMapper::Resource
   property :id, Serial
-  property :league_name, String, { :required => true,
+  property :group_name, String, { :required => true,
                                    :unique => true,
-                                   :messages => { :is_unique => "League name is taken. Please choose another." }
+                                   :messages => { :is_unique => "Group name is taken. Please choose another." }
                                   }
 
   property :password, BCryptHash, :required => true
   validates_confirmation_of :password
 
   attr_accessor :password_confirmation
-  validates_length_of :password_confirmation, :min => 6, if: :new_league
+  validates_length_of :password_confirmation, :min => 6, if: :new_group
 
-  has n, :users
-
-  def new_league
+  def new_group
     self.new? || self.dirty?
   end
 
+
+  has n, :user_groups
+  has n, :users, :through => :user_groups
+
 end
+
+# JOIN TABLE (USER/GROUP)
+# =====================================
+
+class UserGroup
+  include DataMapper::Resource
+  property :id, Serial
+  belongs_to :user
+  belongs_to :group
+end
+
+# BETS
+# =====================================
 
 class Bet
   include DataMapper::Resource
