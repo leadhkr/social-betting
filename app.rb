@@ -3,6 +3,7 @@ require_relative 'helpers'
 require_relative 'config/session'
 require_relative 'models'
 
+
 # USER SIGN IN
 # ===============================
 
@@ -14,7 +15,7 @@ post '/session' do
   user = User.first(params[:user][:email])
 
   if user && password_validation(user, params[:user][:password])
-    login(user)
+    login!(user)
   else
     redirect '/'
   end
@@ -24,7 +25,7 @@ end
 # USER REGISTRATION
 # ===============================
 
-get '/user' do
+get '/user/new' do
   @user = User.new
   erb :new_user
 end
@@ -34,7 +35,7 @@ post '/user' do
   user = User.create(params[:user])
 
   if user.saved?
-    login(user)
+    login!(user)
   else
     erb :new_user
   end
@@ -45,7 +46,7 @@ end
 # ===============================
 
 get '/session/logout' do
-  log_out
+  log_out!
   redirect '/'
 end
 
@@ -88,4 +89,11 @@ post '/join_group' do
     erb :join_group
   end
 
+end
+
+# SHOW GROUP
+# ===============================
+get '/groups/:group_id' do
+  @group = Group.get(params[:group_id])
+  erb :group
 end

@@ -16,7 +16,6 @@ class User
   property :id, Serial
   property :first_name, String, :required => true
   property :last_name, String, :required => true
-  property :admin, Boolean, :default => false
   property :email, String, { :required => true,
                              :unique => true,
                              :format => :email_address,
@@ -77,6 +76,7 @@ class Group
 
   attr_accessor :password_confirmation
   validates_length_of :password_confirmation, :min => 6, :if => :new_group
+
 
   def new_group
     self.new?
