@@ -100,4 +100,14 @@ end
 
 post '/test' do
   bettee = User.get(params[:select])
+
+  bet = Bet.new({  :amount => 50,
+                      :expiration => Date.new(2001, 2, 3),
+                      :description => "hello!",
+                      :source_id => 1
+    })
+
+  current_user.bets << bet
+  current_user.save
+
 end

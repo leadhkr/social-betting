@@ -1,10 +1,13 @@
 <h2><%= @group.group_name %></h2>
-
+<h4>Create a Bet With:</h4>
 <form action="/test" method="post">
   <select name="select">
     <% @group.users.each do |user| %>
       <option value="<%= user.id %>"><%= user.first_name %></option>
     <% end %>
-  </select>
+  </select></br>
+  <input type="text" name="bet[amount]" placeholder="$25"/></br>
+  <input type="text" name="bet[description]" placeholder="I bet that..."/></br>
+  <input type="date" name="bet[expiration_date]"/></br>
   <button>Submit</button>
 </form>

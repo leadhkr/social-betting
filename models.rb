@@ -44,8 +44,9 @@ class User
   has n, :memberships
   has n, :groups, through: :memberships
 
-  has 1, :bet, :child_key => [:bet_creator_id]
-  has 1, :bet, :child_key => [:bet_receiver_id]
+  has n, :bets, :child_key => [:source_id]
+  has n, :bettors, self, :through => :bets, :via => :target
+
 
 end
 
@@ -95,10 +96,10 @@ class Bet
   property :id, Serial
   property :amount, Float
   property :expiration, Date
+  property :description, Text
 
-  belongs_to :bet_creator, 'User'
-  belongs_to :bet_receiver, 'User'
-
+  belongs_to :source, 'User', :key => true
+  belongs_to :target, 'User', :key => true
 end
 
 DataMapper.finalize
