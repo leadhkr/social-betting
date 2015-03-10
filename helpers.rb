@@ -19,8 +19,8 @@ helpers do
     session.delete(:current_user_id)
   end
 
-  def password_validation(user, password)
-    user.password == password
+  def password_validation(instance, password)
+    instance.password == password
   end
 
 end

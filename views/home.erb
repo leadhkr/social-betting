@@ -1,6 +1,17 @@
 <% if logged_in? %>
   Hello, <%= current_user.first_name %>
-  <a href="/new_group">Create Group</a> | <a href="#">Join Group</a> | <a href="/session/logout">Log out</a>
+  <a href="/create_group">Create Group</a> | <a href="/join_group">Join Group</a> | <a href="/session/logout">Log out</a>
+
+
+  <p>
+    <ol>
+      <% current_user.groups.each do |group| %>
+        <li><%= group.group_name %></li>
+      <% end %>
+    </ol>
+  </p>
+
+
 <% else %>
   <%= erb :_sign_in %>
 <% end %>

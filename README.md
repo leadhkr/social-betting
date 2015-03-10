@@ -12,11 +12,12 @@ We're going to create a web application that allows users to create a "group" or
 ### [v0.2] Allow User to Create & Join a Group
 
 * [X] As a user, I want to create league
-* [ ] As a user, I want to join an existing group
+* [X] As a user, I want to join an existing group
 
 ### [v0.3] Assign a Admin to a Group
 
 * [ ] As a user, I want to be assigned an administrator of an account
+* [ ] Create show page for user, which shows a list of users
 
 
 ## Data Model

@@ -52,11 +52,11 @@ end
 # CREATE GROUP
 # ===============================
 
-get '/new_group' do
-  erb :new_group
+get '/create_group' do
+  erb :create_group
 end
 
-post '/new_group' do
+post '/create_group' do
   new_group = Group.create(params[:group])
 
   if new_group.saved?
@@ -64,7 +64,28 @@ post '/new_group' do
     current_user.save
     redirect '/'
   else
-    erb :new_group
+    erb :create_group
+  end
+
+end
+
+# JOIN GROUP
+# ===============================
+
+get '/join_group' do
+  erb :join_group
+end
+
+post '/join_group' do
+
+  group = Group.first(:group_name => params[:group][:group_name])
+
+  if password_validation(group, params[:group][:password])
+    current_user.groups << group
+    current_user.save
+    redirect '/'
+  else
+    erb :join_group
   end
 
 end
