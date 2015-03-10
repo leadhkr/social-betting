@@ -95,5 +95,9 @@ end
 # ===============================
 get '/groups/:group_id' do
   @group = Group.get(params[:group_id])
-  erb :group
+  erb :show_group
+end
+
+post '/test' do
+  bettee = User.get(params[:select])
 end

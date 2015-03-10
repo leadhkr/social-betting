@@ -1,0 +1,10 @@
+<h2><%= @group.group_name %></h2>
+
+<form action="/test" method="post">
+  <select name="select">
+    <% @group.users.each do |user| %>
+      <option value="<%= user.id %>"><%= user.first_name %></option>
+    <% end %>
+  </select>
+  <button>Submit</button>
+</form>
