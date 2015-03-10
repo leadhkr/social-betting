@@ -12,7 +12,7 @@ get '/' do
 end
 
 post '/session' do
-  user = User.first(params[:user][:email])
+  user = User.first(:email => params[:user][:email])
 
   if user && password_validation(user, params[:user][:password])
     login!(user)
