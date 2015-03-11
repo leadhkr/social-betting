@@ -80,6 +80,8 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
     sqlite3 (1.3.10)
     stringex (1.5.1)
     tilt (1.4.1)
@@ -99,4 +101,5 @@ DEPENDENCIES
   rake
   rerun
   sinatra
+  sinatra-flash
   sqlite3

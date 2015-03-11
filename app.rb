@@ -99,15 +99,13 @@ get '/groups/:group_id' do
 end
 
 post '/test' do
-  bettee = User.get(params[:select])
+  current_bettee = User.get(params[:select])
 
-  bet = Bet.new({  :amount => 50,
-                      :expiration => Date.new(2001, 2, 3),
-                      :description => "hello!",
-                      :source_id => 1
-    })
-
-  current_user.bets << bet
-  current_user.save
+  bet = Bet.create({  :amount => params[:bet][:amount],
+                      :expiration => params[:bet][:expiration_date],
+                      :description => params[:bet][:description],
+                      :bettor => current_user,
+                      :bettee => current_bettee
+                  })
 
 end

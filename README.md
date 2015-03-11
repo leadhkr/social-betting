@@ -14,10 +14,10 @@ We're going to create a web application that allows users to create a "group" or
 * [X] As a user, I want to create league
 * [X] As a user, I want to join an existing group
 
-### [v0.3] Assign a Admin to a Group
+### [v0.3] Assign an Admin to a Group
 
 * [ ] As a user, I want to be assigned an administrator of an account
-* [ ] Create show page for user, which shows a list of users
+* [X] Create show page for group, which shows a list of users
 
 
 ## Data Model
