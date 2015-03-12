@@ -25,9 +25,7 @@ class User
                                           }
                             }
   property :phone_number, String, { :required => true,
-                                     :unique => true,
                                      :messages => { :presence => "Please enter your phone number.",
-                                                    :is_unique => "It looks like that phone number is taken."
                                                   }
                                   }
 
@@ -44,11 +42,11 @@ class User
   has n, :memberships
   has n, :groups, through: :memberships
 
-  has n, :bet_creator, 'Bet', :child_key => [:bettor_id]
-  has n, :bet_recipient, 'Bet', :child_key => [:bettee_id]
+  has n, :bet_creators, 'Bet', :child_key => [:bettor_id]
+  has n, :bet_recipients, 'Bet', :child_key => [:bettee_id]
 
   def join_bets
-    self.bet_creator + self.bet_recipient
+    self.bet_creators + self.bet_recipients
   end
 
 
@@ -89,6 +87,7 @@ class Group
 
   has n, :memberships
   has n, :users, through: :memberships
+  has n, :bets
 
 end
 
@@ -104,6 +103,7 @@ class Bet
 
   belongs_to :bettor, 'User', :key => true
   belongs_to :bettee, 'User', :key => true
+  belongs_to :group
 end
 
 DataMapper.finalize

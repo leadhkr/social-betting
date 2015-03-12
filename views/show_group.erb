@@ -1,6 +1,17 @@
 <h2><%= @group.group_name %></h2>
+<p>
+  <a href="/">Home</a> | <a href="/session/logout">Log out</a>
+</p>
+<h4>Current Bets</h4>
+
+<p>
+<% @group.bets.each do |bet| %>
+  <%= bet.amount %></br>
+<% end %>
+</p>
+
 <h4>Create a Bet With:</h4>
-<form action="/test" method="post">
+<form action="/groups/<%= @group.id %>/bets" method="post">
   <select name="select">
     <% @group.users.each do |user| %>
       <option value="<%= user.id %>"><%= user.first_name %></option>

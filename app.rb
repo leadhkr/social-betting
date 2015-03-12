@@ -12,6 +12,7 @@ get '/' do
 end
 
 post '/session' do
+
   user = User.first(:email => params[:user][:email])
 
   if user && password_validation(user, params[:user][:password])
@@ -26,6 +27,7 @@ end
 # ===============================
 
 get '/user/new' do
+  @page_id = "page"
   @user = User.new
   erb :new_user
 end
@@ -98,14 +100,17 @@ get '/groups/:group_id' do
   erb :show_group
 end
 
-post '/test' do
-  current_bettee = User.get(params[:select])
+# CREATE BET
+# ===============================
 
+post '/groups/:group_id/bets' do
+  current_bettee = User.get(params[:select])
   bet = Bet.create({  :amount => params[:bet][:amount],
                       :expiration => params[:bet][:expiration_date],
                       :description => params[:bet][:description],
                       :bettor => current_user,
-                      :bettee => current_bettee
+                      :bettee => current_bettee,
+                      :group_id => params[:group_id]
                   })
-
+  redirect '/'
 end
