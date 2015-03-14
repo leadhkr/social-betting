@@ -98,7 +98,7 @@ th, td {
 }
 
 .table-heading {
-  font-family: 'Lobster', cursive;
+  font-family: 'Lobster', Arial, serif;
   color: #333333;
   font-size: 150%;
 }
@@ -187,7 +187,7 @@ a:hover {
 }
 
 .navbar-brand {
-  font-family: 'Lobster', cursive;
+  font-family: 'Lobster', Arial, serif;
   color: #ffffff;
   font-size: 150%;
   text-decoration: none;
