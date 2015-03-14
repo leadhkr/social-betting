@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'Lobster1.4';
+  src: url('/fonts/Lobster1.4.eot');
+  src: url('/fonts/Lobster1.4.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/Lobster1.4.woff2') format('woff2'),
+       url('/fonts/Lobster1.4.woff') format('woff'),
+       url('/fonts/Lobster1.4.ttf') format('truetype'),
+       url('/fonts/Lobster1.4.svg#Lobster1.4') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url('/font/SourceSansPro-Regular.eot');
+  src: url('/font/SourceSansPro-Regular.eot?#iefix') format('embedded-opentype'),
+       url('/font/SourceSansPro-Regular.woff2') format('woff2'),
+       url('/font/SourceSansPro-Regular.woff') format('woff'),
+       url('/font/SourceSansPro-Regular.ttf') format('truetype'),
+       url('/font/SourceSansPro-Regular.svg#SourceSansPro-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 div.center
 {
   width: 900px;
@@ -94,11 +118,11 @@ th, td {
 }
 
 .table-font {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'SourceSansPro-Regular', sans-serif;
 }
 
 .table-heading {
-  font-family: 'Lobster', Arial, serif;
+  font-family: 'Lobster1.4', Arial, serif;
   color: #333333;
   font-size: 150%;
 }
@@ -140,7 +164,7 @@ nav {
 .user-logout-link {
   text-decoration: none !important;
   color: white;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'SourceSansPro-Regular', sans-serif;
 }
 
 .section-divider {
@@ -173,7 +197,7 @@ nav {
 }
 
 .nav-username {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'SourceSansPro-Regular', sans-serif;
   color: #ffffff;
   text-decoration: none !important;
 }
@@ -187,7 +211,7 @@ a:hover {
 }
 
 .navbar-brand {
-  font-family: 'Lobster', Arial, serif;
+  font-family: 'Lobster1.4', Arial, serif;
   color: #ffffff;
   font-size: 150%;
   text-decoration: none;
