@@ -1,9 +1,7 @@
 require 'sinatra'
-require 'twilio-ruby'
 require_relative 'helpers'
 require_relative 'config/session'
 require_relative 'models'
-
 
 # USER SIGN IN
 # ===============================

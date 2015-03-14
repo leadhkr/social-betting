@@ -14,14 +14,25 @@ We're going to create a web application that allows users to create a "group" or
 * [X] As a user, I want to create league
 * [X] As a user, I want to join an existing group
 
-### [v0.3] Assign an Admin to a Group
+### [v0.3] Allow User to See Group
 
-* [ ] As a user, I want to be assigned an administrator of an account
 * [X] Create show page for group, which shows a list of users
+* [X] Allow user to leave group
 
+### [v0.4] Allow User to Place a Bet
 
-## Data Model
+* [X] Create a bet form
+* [X] Allow user to submit bet and bet with another group member
 
-* User [ id, email, first_name, last_name, phone, password, admin, league_id ]
-* League [ id, name, password, year ]
-* Bets [ amount, user_two, expiration, user_id ]
+### [v0.5] Customize Homepage
+
+* [X] Show Groups and Bets on homepage
+
+### [v1.0] Styling
+
+* [X] Add CSS styling using a mix of bootstrap and custom styling
+* [X] Add Navigation bar
+* [X] Add greeting in navigation bar and bet count
+
+### [v2.0] Group Admin
+* [ ] As a user, I want to be assigned an administrator of an account

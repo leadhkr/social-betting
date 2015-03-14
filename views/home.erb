@@ -1,7 +1,7 @@
 <% if logged_in? %>
 
   <% if current_user.groups.empty? %>
-  
+
     <div class="jumbotron no-groups-container container">
       <h1>Hello, <%= current_user.first_name %>!</h1>
         <p>
@@ -18,9 +18,10 @@
 
     <%= erb :_all_groups %>
     <% bets_array = current_user.join_bets.to_a %>
-    <% group_name = current_user.first_name %>
-    <%= erb :_all_bets, :layout => false, :locals => { :bets_array => bets_array, :group_name => group_name  } %>
-
+    <% unless bets_array.empty? %>
+      <% group_name = current_user.first_name %>
+      <%= erb :_all_bets, :layout => false, :locals => { :bets_array => bets_array, :group_name => group_name  } %>
+    <% end %>
   <% end %>
 
 <% else %>

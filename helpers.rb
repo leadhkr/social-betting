@@ -1,30 +1,30 @@
 helpers do
 
-  def current_user
+  def current_user # Assigns @current_user
     return nil unless session.key?(:current_user_id)
     @current_user ||= User.get(session[:current_user_id])
   end
 
-  def logged_in?
+  def logged_in? # Checks whether a user is currently logged in
     !current_user.nil?
   end
 
-  def login!(user)
+  def login!(user) # Logs a user in
     session[:current_user_id] = user.id
     @current_user = user
     redirect '/'
   end
 
-  def log_out!
+  def log_out! # Logs a user out
     @current_user = nil
     session.delete(:current_user_id)
   end
 
-  def password_validation(instance, password)
+  def password_validation(instance, password) # Checks whether entered password matches password in db
     instance.password == password
   end
 
-  def add_comma(float_num)
+  def add_comma(float_num) # Adds comma when displaying bet amounts in bet table
 
     num = sprintf("%.2f", float_num)
 
@@ -52,11 +52,11 @@ helpers do
 
   end
 
-  def remove_dollar_sign(amount)
+  def remove_dollar_sign(amount) # Removes dollar sign if entered by user when making bet
     amount.gsub("$", "")
   end
 
-  def pluralize_bet
+  def pluralize_bet # Used to pluralize "bets" in the badge in nav bar
     if current_user.join_bets.to_a.count == 1
       "You have <span class=\"badge\">#{current_user.join_bets.to_a.count}</span> open bet"
     else
