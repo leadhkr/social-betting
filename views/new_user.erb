@@ -1,9 +1,18 @@
-<form action="/user" method="post">
-  <input type="text" name="user[email]" value="<%= @user.email %>" placeholder="Email"></br>
-  <input type="text" name="user[first_name]" value="<%= @user.first_name %>" placeholder="First Name"></br>
-  <input type="text" name="user[last_name]" value="<%= @user.last_name %>" placeholder="Last Name"></br>
-  <input type="text" name="user[phone_number]" value="<%= @user.phone_number %>" placeholder="Phone Number"></br>
-  <input type="password" name="user[password]" placeholder="Password"></br>
-  <input type="password" name="user[password_confirmation]" placeholder="Confirm Password"></br>
-  <button>Register</button>
-</form>
+<div class="sign-in-form">
+  <div class="login-form register-container container">
+    <p>
+      <span class="form-heading">REGISTER</span>
+    </p>
+    <form class="form-container" action="/user" method="post">
+      <div class="form-group">
+        <input class="form-control" type="text" name="user[email]" value="<%= @user.email %>" placeholder="Email"></br>
+        <input class="form-control" type="text" name="user[first_name]" value="<%= @user.first_name %>" placeholder="First Name"></br>
+        <input class="form-control" type="text" name="user[last_name]" value="<%= @user.last_name %>" placeholder="Last Name"></br>
+        <input class="form-control" type="text" name="user[phone_number]" value="<%= @user.phone_number %>" placeholder="Phone Number"></br>
+        <input class="form-control" type="password" name="user[password]" placeholder="Password"></br>
+        <input class="form-control" type="password" name="user[password_confirmation]" placeholder="Confirm Password"></br>
+        <button class="btn btn-primary" id="register-input">Register</button>
+      </div>
+    </form>
+  </div>
+</div>

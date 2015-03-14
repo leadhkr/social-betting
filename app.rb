@@ -114,3 +114,12 @@ post '/groups/:group_id/bets' do
                   })
   redirect '/'
 end
+
+# DELETE BET
+# ===============================
+
+delete '/bets/:id' do
+  bet = Bet.first(:id => params[:id])
+  bet.destroy
+  redirect '/'
+end

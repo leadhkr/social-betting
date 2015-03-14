@@ -1,12 +1,19 @@
-<p>
-  <form action="/session" method="post">
+<div class="sign-in-form">
+  <div class="login-form sign-in-container container">
+      <p>
+        <span class="form-heading">LOG IN</span>
+      </p>
 
-      <div class="large-4 column login-box">
-        <input type="text" name="user[email]" placeholder="Email"></br>
-        <input type="password" name="user[password]" placeholder="Password"></br>
-        <button>Log in</button>
-        <a href="/user/new">Create an account</a>
-      </div>
+      <form class="form-container" action="/session" method="post">
 
-  </form>
-</p>
+          <div class="form-group">
+            <input class="form-control" id="sign-in-input" type="text" name="user[email]" placeholder="Email"></br>
+            <input class="form-control" id="sign-in-input" type="password" name="user[password]" placeholder="Password"></br>
+            <button class="btn btn-primary" id="sign-in-input">Log in</button>
+          </div>
+
+          <a id="register" href="/user/new">Create an account</a>
+
+      </form>
+  </div>
+</div>

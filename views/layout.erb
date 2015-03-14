@@ -2,13 +2,29 @@
 <html>
   <head>
     <title>Social Betting</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="tex/css" href="/css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
   </head>
-  <body id="<%= @page_id %>">
+  <body id="logged-in">
+    <nav>
+      <div class="container-fluid">
+        <div>
+          <a href="/" id="logo">Social Betting</a>
+          <% if logged_in? %>
+            <div id="user-links">
+              <span class="user-links-font">Hi, <%= current_user.first_name %></span>
+              <span class="user-links-font"> | </span>
+              <a class="user-links-font" href="/session/logout">Log out</a
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </nav>
 
     <%= yield %>
-
-
 
   </body>
 </html>

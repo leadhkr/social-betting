@@ -1,25 +1,26 @@
 <% if logged_in? %>
-  Hello, <%= current_user.first_name %>
-  <p>
-    <a href="/create_group">Create Group</a> | <a href="/join_group">Join Group</a> | <a href="/session/logout">Log out</a>
-  </p>
 
   <% if current_user.groups.empty? %>
     Please create or join a group!
+
+    <a class="user-links-font" href="/create_group">Create Group</a>
+      <span class="user-links-font"> | </span>
+    <a class="user-links-font" href="/join_group">Join Group</a>
+
   <% else %>
-    <table>
-      <tr>
-        <th>Your Groups</th>
-        <th># of Participants</th>
-      </tr>
-        <% current_user.groups.each do |group| %>
-          <tr>
-            <td><a href="/groups/<%= group.id %>"><%= group.group_name %></a></td>
-            <td><%= group.users.count %></td>
-          </tr>
-        <% end %>
-    </table>
+
+    <a class="user-links-font" href="/create_group">Create Group</a>
+      <span class="user-links-font"> | </span>
+    <a class="user-links-font" href="/join_group">Join Group</a>
+
+    <%= erb :_all_groups %>
+    <% bets_array = current_user.join_bets.to_a %>
+    <%= erb :_all_bets, :layout => false, :locals => { :bets_array => bets_array } %>
+
   <% end %>
+
 <% else %>
+
   <%= erb :_sign_in %>
+
 <% end %>

@@ -24,4 +24,32 @@ helpers do
     instance.password == password
   end
 
+  def add_comma(float_num)
+
+    num = sprintf("%.2f", float_num)
+
+    dollars = num.sub(/\.(.*)/, "")
+    cents = num.scan(/\.(.*)/)
+
+    dollars_array = dollars.split("")
+
+    arr = []
+
+    while dollars_array.size > 0
+      if dollars_array.size > 3
+        arr.unshift(dollars_array.pop)
+        arr.unshift(dollars_array.pop)
+        arr.unshift(dollars_array.pop)
+        arr.unshift(",")
+      else
+        dollars_array.size.times do |n|
+          arr.unshift(dollars_array.pop)
+        end
+      end
+    end
+
+    arr.join("") + "." + cents[0][0]
+
+  end
+
 end

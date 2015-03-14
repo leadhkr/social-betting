@@ -1,0 +1,17 @@
+<div class="center">
+  <article>
+    <span class="table-heading"><%= current_user.first_name %>'s Groups</span>
+    <table class="table table-font">
+      <tr class="bets-table-header">
+        <th>Group</th>
+        <th># of Participants</th>
+      </tr>
+        <% current_user.groups.each do |group| %>
+          <tr>
+            <td><a href="/groups/<%= group.id %>"><%= group.group_name %></a></td>
+            <td><%= group.users.count %></td>
+          </tr>
+        <% end %>
+    </table>
+  </article>
+</div>

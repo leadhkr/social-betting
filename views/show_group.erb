@@ -1,16 +1,7 @@
 <h2><%= @group.group_name %></h2>
-<p>
-  <a href="/">Home</a> | <a href="/session/logout">Log out</a>
-</p>
-<h4>Current Bets</h4>
 
-<p>
-<% @group.bets.each do |bet| %>
-  <%= bet.amount %></br>
-<% end %>
-</p>
+<h4>New Bet</h4>
 
-<h4>Create a Bet With:</h4>
 <form action="/groups/<%= @group.id %>/bets" method="post">
   <select name="select">
     <% @group.users.each do |user| %>
@@ -22,3 +13,8 @@
   <input type="date" name="bet[expiration_date]"/></br>
   <button>Submit</button>
 </form>
+
+<h4>Group Bets</h4>
+
+<% bets_array = @group.bets %>
+<%= erb :_all_bets, :layout => false, :locals => { :bets_array => bets_array } %>
