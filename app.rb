@@ -94,6 +94,9 @@ end
 # SHOW GROUP
 # ===============================
 get '/groups/:group_id' do
+
+  redirect '/' unless logged_in? # Before Filter or Helper Method
+
   @group = Group.get(params[:group_id])
   erb :show_group
 end

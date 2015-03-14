@@ -117,6 +117,10 @@ th, td {
   color: white;
 }
 
+#bet-description {
+  text-align: left;
+}
+
 .table-font {
   font-family: 'SourceSansPro-Regular', sans-serif;
 }

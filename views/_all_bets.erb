@@ -3,6 +3,14 @@
     <table class="table table-font">
       <tr class="bets-table-header">
         <th>Amount</th>
+
+        <!--  The following if statement shows the Bet Initiator Column which -->
+        <!--  should only be present if we are in the group's show page-->
+
+        <% if group_name == "Group" %>
+          <th>Bet Created By</th>
+        <% end %>
+
         <th>Bet Accepted By</th>
         <th>Description</th>
         <th>Payout Date</th>
@@ -11,8 +19,16 @@
       <% bets_array.each do |bet| %>
       <tr class="row-hover">
         <td>$<%= add_comma(bet.amount) %></td>
+
+        <!--  The following if statement shows the Bet Initiator Column which -->
+        <!--  should only be present if we are in the group's show page-->
+
+        <% if group_name == "Group" %>
+          <td><%= bet.bettor.first_name %></td>
+        <% end %>
+
         <td><%= bet.bettee.first_name %></td>
-        <td><%= bet.description %></td>
+        <td id="bet-description"><%= bet.description %></td>
         <td><%= bet.expiration.strftime("%m/%d/%Y") %></td>
         <form action="/bets/<%= bet.id %>" method="post">
           <input type="hidden" name="_method" value="delete">
