@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'twilio-ruby'
 require_relative 'helpers'
 require_relative 'config/session'
 require_relative 'models'
@@ -27,7 +28,6 @@ end
 # ===============================
 
 get '/user/new' do
-  @page_id = "page"
   @user = User.new
   erb :new_user
 end
@@ -105,7 +105,9 @@ end
 
 post '/groups/:group_id/bets' do
   current_bettee = User.get(params[:select])
-  bet = Bet.create({  :amount => params[:bet][:amount],
+  bet_amount = remove_dollar_sign(params[:bet][:amount])
+
+  bet = Bet.create({  :amount => bet_amount,
                       :expiration => params[:bet][:expiration_date],
                       :description => params[:bet][:description],
                       :bettor => current_user,
@@ -121,5 +123,28 @@ end
 delete '/bets/:id' do
   bet = Bet.first(:id => params[:id])
   bet.destroy
+  redirect '/'
+end
+
+# EDIT PROFILE
+# ===============================
+
+get '/profile' do
+  erb :edit_profile
+end
+
+put '/user' do
+  current_user.update(:email => params[:user][:email], :first_name => params[:user][:first_name], :last_name => params[:user][:last_name])
+  current_user.save
+  redirect '/'
+end
+
+# LEAVE GROUP
+# ===============================
+
+delete '/groups/:group_id/leave_group' do
+  group = Group.get(params[:group_id])
+  current_user.groups.delete(group)
+  current_user.save
   redirect '/'
 end

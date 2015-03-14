@@ -24,10 +24,6 @@ class User
                                             :format    => "Please enter a valid email address"
                                           }
                             }
-  property :phone_number, String, { :required => true,
-                                     :messages => { :presence => "Please enter your phone number.",
-                                                  }
-                                  }
 
   property :password, BCryptHash, :required => true
   validates_confirmation_of :password
@@ -42,11 +38,11 @@ class User
   has n, :memberships
   has n, :groups, through: :memberships
 
-  has n, :bet_creators, 'Bet', :child_key => [:bettor_id]
-  has n, :bet_recipients, 'Bet', :child_key => [:bettee_id]
+  has n, :created_bets, 'Bet', :child_key => [:bettor_id]
+  has n, :received_bets, 'Bet', :child_key => [:bettee_id]
 
   def join_bets
-    self.bet_creators + self.bet_recipients
+    self.created_bets + self.received_bets
   end
 
 

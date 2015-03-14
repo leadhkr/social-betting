@@ -28,8 +28,8 @@ helpers do
 
     num = sprintf("%.2f", float_num)
 
-    dollars = num.sub(/\.(.*)/, "")
-    cents = num.scan(/\.(.*)/)
+    dollars = num.split(".").first
+    cents = num.split(".").last
 
     dollars_array = dollars.split("")
 
@@ -48,8 +48,20 @@ helpers do
       end
     end
 
-    arr.join("") + "." + cents[0][0]
+    arr.join("") + "." + cents
 
+  end
+
+  def remove_dollar_sign(amount)
+    amount.gsub("$", "")
+  end
+
+  def pluralize_bet
+    if current_user.join_bets.to_a.count == 1
+      "You have <span class=\"badge\">#{current_user.join_bets.to_a.count}</span> open bet"
+    else
+      "You have <span class=\"badge\">#{current_user.join_bets.to_a.count}</span> open bets"
+    end
   end
 
 end

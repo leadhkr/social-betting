@@ -1,5 +1,20 @@
-<form action="/join_group" method="post">
-  <input type="text" name="group[group_name]" placeholder="Group Name"></br>
-  <input type="password" name="group[password]" placeholder="Password" value=""></br>
-  <button>Join</button>
-</form>
+<div>
+  <div class="login-form join-group-container container">
+    <p>
+      <span class="form-heading">JOIN GROUP</span>
+    </p>
+
+    <form class="form-container" action="/join_group" method="post">
+
+      <div class="form-group">
+        <input class="form-control sign-in-input" type="text" name="group[group_name]" placeholder="Group Name"></br>
+        <input class="form-control sign-in-input" type="password" name="group[password]" placeholder="Password" value=""></br>
+        <button class="btn btn-orange sign-in-input">Join</button>
+      </div>
+
+      <a id="join-group" href="/">Back</a>
+
+    </form>
+
+  </div>
+</div>

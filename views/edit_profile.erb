@@ -1,0 +1,19 @@
+<div>
+  <div class="login-form edit-profile-container container">
+    <p>
+      <span class="form-heading">EDIT PROFILE</span>
+    </p>
+    <form class="form-container" action="/user" method="post">
+      <div class="form-group">
+        <input type="hidden" name="_method" value="put">
+        <label>Email</label>
+        <input class="form-control" type="text" name="user[email]" value="<%= current_user.email %>" placeholder="Email"></br>
+        <label>First Name</label>
+        <input class="form-control" type="text" name="user[first_name]" value="<%= current_user.first_name %>" placeholder="First Name"></br>
+        <label>Last Name</label>
+        <input class="form-control" type="text" name="user[last_name]" value="<%= current_user.last_name %>" placeholder="Last Name"></br>
+        <button class="btn btn-orange" id="register-input">Save Profile</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -9,22 +9,27 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
   </head>
   <body id="logged-in">
-    <nav>
-      <div class="container-fluid">
-        <div>
-          <a href="/" id="logo">Social Betting</a>
-          <% if logged_in? %>
-            <div id="user-links">
-              <span class="user-links-font">Hi, <%= current_user.first_name %></span>
-              <span class="user-links-font"> | </span>
-              <a class="user-links-font" href="/session/logout">Log out</a
-            </div>
-          <% end %>
+
+    <nav class="navbar navbar-static-top" role="navigation">
+      <a class="navbar-brand" href="/">Social Betting</a>
+      <% if logged_in? %>
+        <div class="navbar-collapse collapse">
+            <ul class="user-greeting navbar-nav navbar-right">
+                <li class="navbar-brand">
+                  <a class="nav-username" href="/profile">Hi, <%= current_user.first_name %>!</a>
+                  <span class="section-divider">|</span>
+                    <%= pluralize_bet %>
+                  <span class="section-divider">|</span>
+                  <a class="user-logout-link" href="/session/logout">Log Out</a>
+                </li>
+            </ul>
         </div>
-      </div>
+      <% end %>
     </nav>
 
-    <%= yield %>
+    <div class="center">
+      <%= yield %>
+    </div>
 
   </body>
 </html>

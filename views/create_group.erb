@@ -1,6 +1,21 @@
-<form action="/create_group" method="post">
-  <input type="text" name="group[group_name]" placeholder="Group Name"></br>
-  <input type="password" name="group[password]" placeholder="Password"></br>
-  <input type="password" name="group[password_confirmation]" placeholder="Confirm Password"></br>
-  <button>Create Group</button>
-</form>
+<div>
+  <div class="login-form create-group-container container">
+    <p>
+      <span class="form-heading">CREATE GROUP</span>
+    </p>
+
+    <form class="form-container" action="/create_group" method="post">
+
+      <div class="form-group">
+        <input class="form-control sign-in-input" type="text" name="group[group_name]" placeholder="Group Name"></br>
+        <input class="form-control sign-in-input" type="password" name="group[password]" placeholder="Password"></br>
+        <input class="form-control sign-in-input" type="password" name="group[password_confirmation]" placeholder="Confirm Password"></br>
+        <button class="btn btn-orange sign-in-input">Create Group</button>
+      </div>
+
+      <a id="create-group" href="/">Back</a>
+
+    </form>
+
+  </div>
+</div>

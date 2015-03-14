@@ -7,31 +7,43 @@ div.center
   margin-right: auto;
 }
 
-#bg-wallpaper {
-  background: url("/img/bg.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-#logged-in {
+body {
   background: #eaeaea;
 }
 
-#logo {
+.navbar-brand {
   font-family: 'Lobster', cursive;
-  color: #333333;
-  font-size: 300%;
+  color: #ffffff;
+  font-size: 150%;
   text-decoration: none;
 }
 
 .register-container {
   width: 500px;
-  height: 500px;
+  height: 470px;
+}
+
+.edit-profile-container {
+  width: 500px;
+  height: 420px;
 }
 
 .sign-in-container {
+  width: 400px;
+  height: 300px;
+}
+
+.create-group-container {
+  width: 400px;
+  height: 350px;
+}
+
+.join-group-container {
+  width: 400px;
+  height: 300px;
+}
+
+.edit-container {
   width: 400px;
   height: 300px;
 }
@@ -51,7 +63,7 @@ div.center
   border-color: #ffffff;
 }
 
-#sign-in-input {
+.sign-in-input {
   width: 300px;
 }
 
@@ -72,18 +84,11 @@ div.center
 #user-links {
   float: right;
   padding: 10px;
-}
-
-#user-links a {
   text-decoration: none;
 }
 
-#register {
+#register, #sign-in, #create-group, #join-group, #group-link, .group-links a {
   text-decoration: none;
-}
-
-#group-table {
-
 }
 
 th, td {
@@ -103,4 +108,87 @@ th, td {
   font-family: 'Lobster', cursive;
   color: #333333;
   font-size: 150%;
+}
+
+.table-heading-color {
+  color: #fe4b03;
+}
+
+.styled-select select {
+  background: transparent;
+  width: 268px;
+  padding: 5px;
+  font-size: 16px;
+  line-height: 1;
+  border: 0;
+  border-radius: 0;
+  height: 34px;
+  -webkit-appearance: none;
+}
+
+.styled-select {
+  width: 240px;
+  height: 34px;
+  overflow: hidden;
+  background: url("/img/down_arrow_select.jpg") no-repeat right #ddd;
+  border: 1px solid #ccc;
+}
+
+nav {
+  background: #333333;
+}
+
+.user-greeting {
+  list-style-type: none;
+  margin-right: 5px;
+  font-size: 70%;
+}
+
+.user-logout-link {
+  text-decoration: none !important;
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.section-divider {
+  opacity: 0.1;
+}
+
+.btn-orange {
+  background: #fe4b03;
+  border: none;
+  color: white;
+}
+
+.badge {
+  background: #fe4b03;
+}
+
+.no-groups-container {
+  width: 100%;
+  height: 300px;
+  text-align: center;
+
+}
+
+.btn-size {
+  width: 100px;
+}
+
+.form-size {
+  width: 900px;
+}
+
+.nav-username {
+  font-family: 'Lobster', cursive;
+  color: #ffffff;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: #fe4b03;
+}
+
+.row-hover:hover {
+  background: #f1f1f1;
 }

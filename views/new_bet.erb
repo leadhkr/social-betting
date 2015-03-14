@@ -1,0 +1,21 @@
+<p>
+  <span class="form-heading">CREATE A NEW BET</span>
+</p>
+
+<form class="form-container" action="/groups/<%= @group.id %>/bets" method="post">
+  <div class="form-group">
+    <select class="form-control sign-in-input form-size" name="select" class="dropdown">
+      <% @group.users.each do |user| %>
+        <% if user.id == current_user.id %>
+          <% next %>
+        <% else %>
+          <option value="<%= user.id %>"><%= user.first_name %></option>
+        <% end %>
+      <% end %>
+    </select></br>
+    <input class="form-control sign-in-input form-size" type="text" name="bet[amount]" placeholder="$25"/></br>
+    <textarea class="form-control sign-in-input form-size" name="bet[description]" rows="8" cols="40" placeholder="I bet that..."></textarea></br>
+    <input class="form-control sign-in-input form-size" type="date" name="bet[expiration_date]"/></br>
+    <button class="btn btn-orange sign-in-input form-size">Create Bet</button>
+  </div>
+</form>

@@ -1,24 +1,24 @@
-<div class="center">
-  <article>
-    <span class="table-heading"><%= current_user.first_name %>'s Open Bets</span>
+<article>
+    <span class="table-heading"><%= group_name %>'s Open Bets</span>
     <table class="table table-font">
       <tr class="bets-table-header">
         <th>Amount</th>
         <th>Bet Accepted By</th>
         <th>Description</th>
-        <th>Action</th>
+        <th>Payout Date</th>
+        <th>Delete Bet</th>
       </tr>
       <% bets_array.each do |bet| %>
-      <tr>
-          <td>$<%= add_comma(bet.amount) %></td>
-          <td><%= bet.bettee.first_name %></td>
-          <td><%= bet.description %></td>
-          <form action="/bets/<%= bet.id %>" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <td><button class="btn btn-danger glyphicon glyphicon-remove"></button></td>
-          </form>
-        </tr>
-        <% end %>
-      </table>
-    </article>
-</div>
+      <tr class="row-hover">
+        <td>$<%= add_comma(bet.amount) %></td>
+        <td><%= bet.bettee.first_name %></td>
+        <td><%= bet.description %></td>
+        <td><%= bet.expiration.strftime("%m/%d/%Y") %></td>
+        <form action="/bets/<%= bet.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <td><button class="btn btn-orange glyphicon glyphicon-remove"></button></td>
+        </form>
+      </tr>
+      <% end %>
+    </table>
+</article>

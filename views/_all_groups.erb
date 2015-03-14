@@ -1,17 +1,23 @@
-<div class="center">
-  <article>
-    <span class="table-heading"><%= current_user.first_name %>'s Groups</span>
+<article>
+    <div class="group-links">
+      <a class="table-heading table-heading-color" href="/create_group">Create Group</a>
+      <span class="user-links-font table-heading-color section-divider"> | </span>
+      <a class="table-heading table-heading-color" href="/join_group">Join Group</a>
+    </div>
+
     <table class="table table-font">
       <tr class="bets-table-header">
-        <th>Group</th>
-        <th># of Participants</th>
+        <th><%= current_user.first_name %>'s Groups</th>
+        <th>Open Bets</th>
+        <th>Members</th>
       </tr>
-        <% current_user.groups.each do |group| %>
-          <tr>
-            <td><a href="/groups/<%= group.id %>"><%= group.group_name %></a></td>
-            <td><%= group.users.count %></td>
-          </tr>
-        <% end %>
+      <% current_user.groups.each do |group| %>
+        <tr class="row-hover">
+          <td><a id="group-link" href="/groups/<%= group.id %>"><%= group.group_name %></a></td>
+          <td><%= group.bets.count %></td>
+          <td><%= group.users.count %></td>
+        </tr>
+      </a>
+      <% end %>
     </table>
-  </article>
-</div>
+</article>

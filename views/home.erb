@@ -1,21 +1,25 @@
 <% if logged_in? %>
 
   <% if current_user.groups.empty? %>
-    Please create or join a group!
-
-    <a class="user-links-font" href="/create_group">Create Group</a>
-      <span class="user-links-font"> | </span>
-    <a class="user-links-font" href="/join_group">Join Group</a>
+  
+    <div class="jumbotron no-groups-container container">
+      <h1>Hello, <%= current_user.first_name %>!</h1>
+        <p>
+          Oops. It looks like you don't belong to any groups yet.</br>
+          Please either create a group or join an existing one.
+        </p>
+        <p>
+          <a class="btn btn-orange btn-size" href="/create_group" role="button">Create</a>
+          <a class="btn btn-orange btn-size" href="/join_group" role="button">Join</a>
+        </p>
+      </div>
 
   <% else %>
 
-    <a class="user-links-font" href="/create_group">Create Group</a>
-      <span class="user-links-font"> | </span>
-    <a class="user-links-font" href="/join_group">Join Group</a>
-
     <%= erb :_all_groups %>
     <% bets_array = current_user.join_bets.to_a %>
-    <%= erb :_all_bets, :layout => false, :locals => { :bets_array => bets_array } %>
+    <% group_name = current_user.first_name %>
+    <%= erb :_all_bets, :layout => false, :locals => { :bets_array => bets_array, :group_name => group_name  } %>
 
   <% end %>
 

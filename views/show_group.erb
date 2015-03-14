@@ -1,20 +1,30 @@
-<h2><%= @group.group_name %></h2>
+</span> <span class="table-heading"><%= @group.group_name %></span>
 
-<h4>New Bet</h4>
+<p>
+  <form action="/groups/<%= @group.id %>/leave_group" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button class="btn btn-danger">Leave Group</button>
+  </form>
+</p>
 
-<form action="/groups/<%= @group.id %>/bets" method="post">
-  <select name="select">
-    <% @group.users.each do |user| %>
-      <option value="<%= user.id %>"><%= user.first_name %></option>
-    <% end %>
-  </select></br>
-  <input type="text" name="bet[amount]" placeholder="$25"/></br>
-  <textarea name="bet[description]" rows="8" cols="40" placeholder="I bet that..."></textarea></br>
-  <input type="date" name="bet[expiration_date]"/></br>
-  <button>Submit</button>
-</form>
+<% if @group.users.count == 1 %>
 
-<h4>Group Bets</h4>
+  <div class="jumbotron no-groups-container container">
+    <h1>Hello, <%= current_user.first_name %>!</h1>
+      <p>
+        It looks like you're the only member of this group.</br>
+        You must invite other members before you can place a bet.
+      </p>
+  </div>
 
-<% bets_array = @group.bets %>
-<%= erb :_all_bets, :layout => false, :locals => { :bets_array => bets_array } %>
+<% else %>
+
+    <%= erb :new_bet %>
+
+  <% unless @group.bets.empty? %>
+    <% bets_array = @group.bets %>
+    <% group_name = "Group" %>
+    <%= erb :_all_bets, :layout => false, :locals => { :bets_array => bets_array, :group_name => group_name } %>
+  <% end %>
+
+<% end %>
