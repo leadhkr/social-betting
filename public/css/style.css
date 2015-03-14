@@ -11,13 +11,6 @@ body {
   background: #eaeaea;
 }
 
-.navbar-brand {
-  font-family: 'Lobster', cursive;
-  color: #ffffff;
-  font-size: 150%;
-  text-decoration: none;
-}
-
 .register-container {
   width: 500px;
   height: 470px;
@@ -180,7 +173,7 @@ nav {
 }
 
 .nav-username {
-  font-family: 'Lobster', cursive;
+  font-family: 'Source Sans Pro', sans-serif;
   color: #ffffff;
   text-decoration: none !important;
 }
@@ -191,4 +184,11 @@ a:hover {
 
 .row-hover:hover {
   background: #f1f1f1;
+}
+
+.navbar-brand {
+  font-family: 'Lobster', cursive;
+  color: #ffffff;
+  font-size: 150%;
+  text-decoration: none;
 }
